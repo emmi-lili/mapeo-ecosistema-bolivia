@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Palette exposed as CSS variables — mirror of the Tailwind theme */
+  --color-base: #0a0a0a;
+  --color-surface: #111111;
+  --color-emerald: #10b981;
+  --color-emerald-highlight: #34d399;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --color-heading: #fafafa;
+  --color-body: #a1a1aa;
+}
+
+* {
+  border-color: var(--border-subtle);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer components {
+  /* Shared container */
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  /* Primary button — emerald fill, black text */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-emerald px-5 py-2.5
+      text-sm font-semibold text-base transition-all duration-200
+      hover:bg-emerald-highlight hover:shadow-[0_0_30px_-6px_rgba(16,185,129,0.7)];
+  }
+
+  /* Secondary button — subtle border */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-subtle
+      bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-heading transition-colors
+      duration-200 hover:bg-white/[0.06];
+  }
+
+  /* Card surface */
+  .card {
+    @apply rounded-2xl border border-subtle bg-white/[0.02] p-6;
+  }
+
+  /* Eyebrow label above section titles */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-subtle bg-white/[0.02]
+      px-3 py-1 text-xs font-medium uppercase tracking-wider text-emerald-highlight;
+  }
+}
+
+/* Subtle radial emerald glow helper */
+.emerald-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(16, 185, 129, 0.18) 0%,
+    rgba(16, 185, 129, 0.06) 35%,
+    transparent 70%
+  );
+}

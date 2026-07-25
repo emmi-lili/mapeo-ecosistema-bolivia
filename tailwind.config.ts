@@ -1,0 +1,58 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./config/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // Backgrounds
+        base: "#0A0A0A", // near-pure black — page background
+        surface: "#111111", // alternating sections
+        // Emerald accent
+        emerald: {
+          DEFAULT: "#10B981", // primary accent
+          highlight: "#34D399", // highlights / hovers
+        },
+        // Text
+        heading: "#FAFAFA", // titles
+        body: "#A1A1AA", // paragraph text
+      },
+      borderColor: {
+        subtle: "rgba(255,255,255,0.08)",
+      },
+      backgroundColor: {
+        subtle: "rgba(255,255,255,0.04)",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      borderRadius: {
+        "4xl": "2rem",
+      },
+      maxWidth: {
+        content: "1120px",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0", opacity: "0" },
+          to: { height: "var(--radix-accordion-content-height)", opacity: "1" },
+        },
+        ripple: {
+          "0%, 100%": { transform: "translate(-50%, -50%) scale(1)" },
+          "50%": { transform: "translate(-50%, -50%) scale(0.9)" },
+        },
+      },
+      animation: {
+        // Per-circle delay is applied inline via `animationDelay` in the component.
+        ripple: "ripple var(--duration, 2s) ease infinite",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
