@@ -1,0 +1,50 @@
+import { Activity } from "lucide-react";
+import { site, footer } from "@/config/content";
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-subtle bg-surface">
+      <div className="container-content py-16">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
+          {/* Brand */}
+          <div className="col-span-2">
+            <a href="#" className="flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald text-base">
+                <Activity size={18} strokeWidth={2.5} />
+              </span>
+              <span className="text-lg font-semibold tracking-tight text-heading">
+                {site.name}
+              </span>
+            </a>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-body">
+              {footer.description}
+            </p>
+          </div>
+
+          {/* Link columns */}
+          {footer.columns.map((col) => (
+            <div key={col.title}>
+              <p className="text-sm font-semibold text-heading">{col.title}</p>
+              <ul className="mt-4 space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-body transition-colors hover:text-heading"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 border-t border-subtle pt-8">
+          <p className="text-sm text-body">{footer.copyright}</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
