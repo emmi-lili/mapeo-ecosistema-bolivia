@@ -13,6 +13,7 @@ export const site = {
 };
 
 export const nav = {
+  edition: "Edición 2026",
   links: [
     { label: "El hallazgo", href: "#hallazgo" },
     { label: "Web3 cívico", href: "#web3" },
@@ -30,12 +31,26 @@ export const hero = {
     "El primer mapeo integral del ecosistema crypto y blockchain en Bolivia: actores, regulación, volúmenes y las brechas que definen lo que viene. Con datos oficiales del BCB, ASFI y UIF.",
   cta: { label: "Descargar el ebook", href: "#descarga" },
   microcopy: "Gratis. Te lo enviamos a tu correo.",
-  // Cifras destacadas bajo el CTA
+  // Cifras destacadas bajo el CTA. `spark: true` dibuja un sparkline.
   stats: [
-    { value: "+630%", label: "crecimiento en un año" },
-    { value: "10", label: "categorías de actores" },
-    { value: "+90", label: "actores mapeados" },
-    { value: "77/23", label: "brecha de género" },
+    { value: "+630%", label: "crecimiento en un año", spark: true },
+    { value: "10", label: "categorías de actores", spark: false },
+    { value: "+90", label: "actores mapeados", spark: false },
+    { value: "77/23", label: "brecha de género", spark: false },
+  ],
+  // Trust strip
+  sourcesLabel: "Fuentes oficiales",
+  sources: ["BCB", "ASFI", "UIF"],
+};
+
+// Mini línea de tiempo regulatoria (teaser — la completa va en el ebook)
+export const timeline = {
+  label: "Del veto a la habilitación",
+  steps: [
+    { year: "2014", title: "Prohibición", caption: "El BCB veta las criptomonedas." },
+    { year: "2020", title: "Presión del dólar", caption: "La escasez de divisas empuja a stablecoins." },
+    { year: "2024", title: "Habilitación", caption: "Se autorizan los activos virtuales." },
+    { year: "2025", title: "Hacia una CBDC", caption: "El Estado explora moneda digital." },
   ],
 };
 
