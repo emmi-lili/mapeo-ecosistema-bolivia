@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import Timeline from "@/components/Timeline";
 import Insight from "@/components/Insight";
 import Download from "@/components/Download";
 import Footer from "@/components/Footer";
@@ -11,8 +12,10 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <Timeline />
         <Insight
           id={hallazgo.id}
+          number="02"
           eyebrow={hallazgo.eyebrow}
           title={hallazgo.title}
           paragraphs={hallazgo.paragraphs}
@@ -20,6 +23,7 @@ export default function Home() {
         />
         <Insight
           id={web3.id}
+          number="03"
           eyebrow={web3.eyebrow}
           title={web3.title}
           paragraphs={web3.paragraphs}

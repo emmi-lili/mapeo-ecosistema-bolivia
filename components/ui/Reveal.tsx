@@ -1,21 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
 /**
  * Subtle scroll-reveal wrapper: fade + small upward slide when the element
  * enters the viewport. Discreet by design — nothing flashy.
+ * Honours prefers-reduced-motion (fades without moving).
  */
-
-const variants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay },
-  }),
-};
 
 type RevealProps = {
   children: ReactNode;
@@ -31,7 +23,18 @@ export default function Reveal({
   className,
   as = "div",
 }: RevealProps) {
+  const reduce = useReducedMotion();
   const MotionTag = motion[as];
+
+  const variants: Variants = {
+    hidden: { opacity: 0, y: reduce ? 0 : 16 },
+    visible: (d: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: d },
+    }),
+  };
+
   return (
     <MotionTag
       className={className}
