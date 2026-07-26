@@ -28,22 +28,29 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Visible, consistent focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
 @layer components {
   /* Shared container */
   .container-content {
     @apply mx-auto w-full max-w-content px-5 sm:px-8;
   }
 
-  /* Primary button — emerald fill, black text */
+  /* Primary button — emerald fill, black text. Squarer radius = editorial. */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-emerald px-5 py-2.5
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-emerald px-5 py-2.5
       text-sm font-semibold text-base transition-all duration-200
-      hover:bg-emerald-highlight hover:shadow-[0_0_30px_-6px_rgba(16,185,129,0.7)];
+      hover:bg-emerald-highlight hover:shadow-[0_0_24px_-8px_rgba(16,185,129,0.8)];
   }
 
   /* Secondary button — subtle border */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-subtle
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-subtle
       bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-heading transition-colors
       duration-200 hover:bg-white/[0.06];
   }
@@ -53,14 +60,29 @@ body {
     @apply rounded-2xl border border-subtle bg-white/[0.02] p-6;
   }
 
-  /* Eyebrow label above section titles */
-  .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-subtle bg-white/[0.02]
-      px-3 py-1 text-xs font-medium uppercase tracking-wider text-emerald-highlight;
+  /* Section label — no pill. Small caps + tracking, muted, with a number. */
+  .section-label {
+    @apply inline-flex items-center gap-2.5 text-xs font-medium uppercase
+      tracking-[0.22em] text-white/45;
+  }
+  .section-label__num {
+    @apply font-display text-emerald-highlight;
+  }
+
+  /* Animated underline for nav links */
+  .nav-link {
+    @apply relative text-sm text-body transition-colors hover:text-heading;
+  }
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-emerald transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
   }
 }
 
-/* Subtle radial emerald glow helper */
+/* Subtle radial emerald glow helper (used only in the hero now) */
 .emerald-glow {
   background: radial-gradient(
     circle at center,
@@ -68,4 +90,40 @@ body {
     rgba(16, 185, 129, 0.06) 35%,
     transparent 70%
   );
+}
+
+/* ── Texture overlays ─────────────────────────────────────────
+   Film grain + a soft vignette, layered above content but never
+   interactive. They kill the flat, pure-CSS "template" look. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 120% at 50% 0%,
+    transparent 55%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
