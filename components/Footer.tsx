@@ -39,7 +39,8 @@ export default function Footer() {
         {/* Aclaración (una sola vez) */}
         <p className="mt-12 text-xs italic text-body/70">{footer.aclaracion}</p>
 
-        <div className="mt-6 border-t border-subtle pt-8">
+        <div className="mt-6 border-t border-subtle pt-8 space-y-3">
+          <p className="text-xs leading-relaxed text-body/80">{footer.disclaimer}</p>
           <p className="text-sm text-body">{footer.copyright}</p>
         </div>
       </div>

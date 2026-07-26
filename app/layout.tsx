@@ -10,7 +10,7 @@ const inter = Inter({
   display: "swap",
 });
 
-// Display typeface for headlines — the type contrast is what pulls it out of
+// Display typeface for headlines - the type contrast is what pulls it out of
 // the generic "everything in Inter" look.
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -21,12 +21,12 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mapeocrypto.bo"),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `${site.name} · ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description: site.tagline,
   openGraph: {
-    title: `${site.name} — Crypto Bolivia 2026`,
+    title: `${site.name} · Crypto Bolivia 2026`,
     description: site.tagline,
     type: "website",
     locale: "es_BO",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Crypto Bolivia 2026`,
+    title: `${site.name} · Crypto Bolivia 2026`,
     description: site.tagline,
   },
 };
@@ -51,7 +51,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased">
         {children}
-        {/* Texture — non-interactive overlays */}
+        {/* Texture - non-interactive overlays */}
         <div className="vignette-overlay" aria-hidden />
         <div className="grain-overlay" aria-hidden />
       </body>

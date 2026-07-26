@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 
 /**
  * Subtle scroll-reveal wrapper: fade + small upward slide when the element
- * enters the viewport. Discreet by design — nothing flashy.
+ * enters the viewport. Discreet by design - nothing flashy.
  * Honours prefers-reduced-motion (fades without moving).
  */
 
