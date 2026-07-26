@@ -10,12 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         // Backgrounds
-        base: "#0A0A0A", // near-pure black — page background
+        base: "#0A0A0A", // near-pure black - page background
         surface: "#111111", // alternating sections
-        // Emerald accent
+        // Accent (teal from #56bfc8)
         emerald: {
-          DEFAULT: "#10B981", // primary accent
-          highlight: "#34D399", // highlights / hovers
+          DEFAULT: "#56BFC8",
+          highlight: "#8EE8EF",
+          deep: "#3A9AA3",
         },
         // Text
         heading: "#FAFAFA", // titles
@@ -26,6 +27,10 @@ const config: Config = {
       },
       backgroundColor: {
         subtle: "rgba(255,255,255,0.04)",
+      },
+      backgroundImage: {
+        accent:
+          "linear-gradient(135deg, #3A9AA3 0%, #56BFC8 48%, #8EE8EF 100%)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

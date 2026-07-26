@@ -33,8 +33,8 @@ export default function Nav() {
       >
         {/* Logo + edition chip */}
         <div className="flex items-center gap-3">
-          <a href="#" aria-label={`${nav.cta.label} — inicio`}>
-            <Logo markSize={scrolled ? 22 : 26} />
+          <a href="#" aria-label={`${nav.cta.label}, inicio`}>
+            <Logo markSize={scrolled ? 26 : 32} />
           </a>
           <span className="hidden items-center gap-3 lg:flex">
             <span className="h-4 w-px bg-white/10" />
@@ -71,7 +71,7 @@ export default function Nav() {
       {/* Reading-progress hairline */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
-        className="absolute bottom-0 left-0 h-px w-full origin-left bg-gradient-to-r from-emerald to-emerald-highlight"
+        className="absolute bottom-0 left-0 h-px w-full origin-left bg-accent"
       />
 
       {/* Mobile menu */}

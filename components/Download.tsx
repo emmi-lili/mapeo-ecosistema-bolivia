@@ -26,7 +26,7 @@ export default function Download() {
                 <li key={item} className="flex items-start gap-3 text-sm">
                   <Check
                     size={18}
-                    className="mt-0.5 shrink-0 text-emerald-highlight"
+                    className="mt-0.5 shrink-0 text-[#56bfc8]"
                   />
                   <span className="text-body">{item}</span>
                 </li>

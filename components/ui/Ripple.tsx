@@ -1,7 +1,7 @@
 import React, { type ComponentPropsWithoutRef, type CSSProperties } from "react";
 
 /**
- * Ripple — animated concentric rings, used behind the hero to draw the eye.
+ * Ripple - animated concentric rings, used behind the hero to draw the eye.
  * Adapted from MagicUI (https://magicui.design/docs/components/ripple) for
  * Tailwind v3 + this project's emerald palette. The `animate-ripple` keyframes
  * live in tailwind.config.ts; per-circle delay is applied inline.
@@ -43,7 +43,7 @@ export const Ripple = React.memo(function Ripple({
                 animationDelay,
                 borderStyle: "solid",
                 borderWidth: "1px",
-                borderColor: "rgba(52,211,153,0.7)",
+                borderColor: "rgba(86,191,200,0.7)",
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%) scale(1)",

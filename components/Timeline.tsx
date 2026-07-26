@@ -2,7 +2,7 @@ import { timeline } from "@/config/content";
 import Reveal from "@/components/ui/Reveal";
 
 /**
- * Mini regulatory timeline — a teaser (the full one lives in the ebook).
+ * Mini regulatory timeline - a teaser (the full one lives in the ebook).
  * Horizontal stepper on desktop, vertical on mobile. Breaks the rhythm of
  * centered text sections and reads like a real report.
  */
@@ -26,15 +26,15 @@ export default function Timeline() {
                 {i < timeline.steps.length - 1 && (
                   <span
                     aria-hidden
-                    className="absolute left-4 top-2 hidden h-px w-full bg-gradient-to-r from-emerald/40 to-transparent lg:block"
+                    className="absolute left-4 top-2 hidden h-px w-full bg-gradient-to-r from-emerald/50 to-transparent lg:block"
                   />
                 )}
                 <span className="relative flex h-3 w-3 items-center justify-center">
                   <span className="h-3 w-3 rounded-full border border-emerald bg-emerald/20" />
-                  <span className="absolute h-1.5 w-1.5 rounded-full bg-emerald-highlight" />
+                  <span className="absolute h-1.5 w-1.5 rounded-full bg-[#56bfc8]" />
                 </span>
 
-                <p className="mt-4 font-display text-sm font-semibold tracking-wide text-emerald-highlight">
+                <p className="mt-4 font-display text-sm font-semibold tracking-wide text-accent-gradient">
                   {step.year}
                 </p>
                 <p className="mt-1 font-medium text-heading">{step.title}</p>

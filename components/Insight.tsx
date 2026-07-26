@@ -46,7 +46,7 @@ export default function Insight({
           </div>
 
           {note && (
-            <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-subtle bg-emerald/[0.06] px-4 py-2 text-sm text-emerald-highlight">
+            <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-subtle bg-emerald/[0.06] px-4 py-2 text-sm text-[#56bfc8]">
               <Lock size={15} />
               {note}
             </p>

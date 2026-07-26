@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 :root {
-  /* Palette exposed as CSS variables — mirror of the Tailwind theme */
+  /* Palette exposed as CSS variables - mirror of the Tailwind theme */
   --color-base: #0a0a0a;
   --color-surface: #111111;
-  --color-emerald: #10b981;
-  --color-emerald-highlight: #34d399;
+  --color-accent: #56bfc8;
+  --color-accent-deep: #3a9aa3;
+  --color-accent-highlight: #8ee8ef;
+  --color-emerald: #56bfc8;
+  --color-emerald-highlight: #8ee8ef;
+  --gradient-accent: linear-gradient(
+    135deg,
+    #3a9aa3 0%,
+    #56bfc8 48%,
+    #8ee8ef 100%
+  );
   --border-subtle: rgba(255, 255, 255, 0.08);
   --color-heading: #fafafa;
   --color-body: #a1a1aa;
@@ -30,7 +39,7 @@ body {
 
 /* Visible, consistent focus ring for keyboard users */
 :focus-visible {
-  outline: 2px solid var(--color-emerald);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -41,14 +50,14 @@ body {
     @apply mx-auto w-full max-w-content px-5 sm:px-8;
   }
 
-  /* Primary button — emerald fill, black text. Squarer radius = editorial. */
+  /* Primary button - accent gradient */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-emerald px-5 py-2.5
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5
       text-sm font-semibold text-base transition-all duration-200
-      hover:bg-emerald-highlight hover:shadow-[0_0_24px_-8px_rgba(16,185,129,0.8)];
+      hover:brightness-110 hover:shadow-[0_0_24px_-8px_rgba(86,191,200,0.85)];
   }
 
-  /* Secondary button — subtle border */
+  /* Secondary button - subtle border */
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-subtle
       bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-heading transition-colors
@@ -60,13 +69,21 @@ body {
     @apply rounded-2xl border border-subtle bg-white/[0.02] p-6;
   }
 
-  /* Section label — no pill. Small caps + tracking, muted, with a number. */
+  /* Section label - no pill. Small caps + tracking, muted, with a number. */
   .section-label {
     @apply inline-flex items-center gap-2.5 text-xs font-medium uppercase
       tracking-[0.22em] text-white/45;
   }
   .section-label__num {
-    @apply font-display text-emerald-highlight;
+    @apply font-display text-accent-gradient;
+  }
+
+  /* Text filled with the accent gradient */
+  .text-accent-gradient {
+    background-image: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   /* Animated underline for nav links */
@@ -75,19 +92,19 @@ body {
   }
   .nav-link::after {
     content: "";
-    @apply absolute -bottom-1 left-0 h-px w-0 bg-emerald transition-all duration-300;
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300;
   }
   .nav-link:hover::after {
     @apply w-full;
   }
 }
 
-/* Subtle radial emerald glow helper (used only in the hero now) */
+/* Soft radial accent glow */
 .emerald-glow {
   background: radial-gradient(
     circle at center,
-    rgba(16, 185, 129, 0.18) 0%,
-    rgba(16, 185, 129, 0.06) 35%,
+    rgba(86, 191, 200, 0.22) 0%,
+    rgba(86, 191, 200, 0.08) 35%,
     transparent 70%
   );
 }
