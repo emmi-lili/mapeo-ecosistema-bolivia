@@ -41,7 +41,10 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-subtle pt-8">
+        {/* Aclaración (una sola vez) */}
+        <p className="mt-12 text-xs italic text-body/70">{footer.aclaracion}</p>
+
+        <div className="mt-6 border-t border-subtle pt-8">
           <p className="text-sm text-body">{footer.copyright}</p>
         </div>
       </div>

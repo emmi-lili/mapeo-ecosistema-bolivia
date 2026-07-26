@@ -21,15 +21,14 @@ export default function Hero() {
 
       <div className="container-content relative flex flex-col items-center text-center">
         <Reveal>
-          <h1 className="mx-auto max-w-3xl text-balance text-4xl font-bold leading-[1.08] tracking-tight text-heading sm:text-6xl">
-            {hero.titleLine1}
-            <br className="hidden sm:block" />{" "}
+          <h1 className="mx-auto max-w-4xl text-balance text-3xl font-bold leading-[1.12] tracking-tight text-heading sm:text-5xl">
+            {hero.titleLine1}{" "}
             <span className="text-emerald-highlight">{hero.titleLine2}</span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-body">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-body">
             {hero.subtitle}
           </p>
         </Reveal>
@@ -39,6 +38,23 @@ export default function Hero() {
             <EbookModal label={hero.cta.label} />
             <p className="text-sm text-body">{hero.microcopy}</p>
           </div>
+        </Reveal>
+
+        {/* Cifras destacadas */}
+        <Reveal delay={0.24} className="mt-14 w-full">
+          <dl className="mx-auto grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-subtle bg-white/[0.06] sm:grid-cols-4">
+            {hero.stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center gap-1 bg-base px-4 py-6"
+              >
+                <dt className="text-2xl font-bold tracking-tight text-emerald-highlight sm:text-3xl">
+                  {stat.value}
+                </dt>
+                <dd className="text-xs leading-snug text-body">{stat.label}</dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
       </div>
     </section>
