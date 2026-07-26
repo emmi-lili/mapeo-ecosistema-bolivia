@@ -1,6 +1,6 @@
 /**
  * Central content config.
- * Edit ALL landing-page copy here — every section imports from this file.
+ * Edit ALL landing-page copy here - every section imports from this file.
  *
  * Copy basada en: Brief_Web_Mapeo_Crypto_Bolivia_2026 (versión light).
  * Todo lo que dice "(en el ebook)" es lo que NO se revela en la web.
@@ -24,26 +24,22 @@ export const nav = {
 
 export const hero = {
   // Titular a dos líneas (la segunda va en esmeralda)
-  titleLine1:
-    "La adopción cripto más acelerada de Sudamérica no nació de la especulación.",
-  titleLine2: "Nació de la necesidad.",
+  titleLine1: "Mapeo del ecosistema cripto y blockchain en",
+  titleLine2: "Bolivia",
   subtitle:
     "El primer mapeo integral del ecosistema crypto y blockchain en Bolivia: actores, regulación, volúmenes y las brechas que definen lo que viene. Con datos oficiales del BCB, ASFI y UIF.",
   cta: { label: "Descargar el ebook", href: "#descarga" },
   microcopy: "Gratis. Te lo enviamos a tu correo.",
-  // Cifras destacadas bajo el CTA. `spark: true` dibuja un sparkline.
+  // Cifras destacadas bajo el CTA
   stats: [
-    { value: "+630%", label: "crecimiento en un año", spark: true },
-    { value: "10", label: "categorías de actores", spark: false },
-    { value: "+90", label: "actores mapeados", spark: false },
-    { value: "77/23", label: "brecha de género", spark: false },
+    { value: "+630%", label: "crecimiento en un año" },
+    { value: "10", label: "categorías de actores" },
+    { value: "+90", label: "actores mapeados" },
+    { value: "77/23", label: "brecha de género" },
   ],
-  // Trust strip
-  sourcesLabel: "Fuentes oficiales",
-  sources: ["BCB", "ASFI", "UIF"],
 };
 
-// Mini línea de tiempo regulatoria (teaser — la completa va en el ebook)
+// Mini línea de tiempo regulatoria (teaser - la completa va en el ebook)
 export const timeline = {
   label: "Del veto a la habilitación",
   steps: [
@@ -74,7 +70,7 @@ export const web3 = {
   title: "Blockchain en Bolivia no es solo dólares digitales.",
   paragraphs: [
     "Hay una capa web3 no especulativa con el Estado, la academia y la sociedad civil de protagonistas: voto ciudadano con blockchain, tokenización del agro e inmobiliario, trazabilidad para exportación, una CBDC del banco central.",
-    "El valor cívico y productivo — no la especulación — es lo que está moviendo la adopción.",
+    "El valor cívico y productivo, no la especulación, es lo que está moviendo la adopción.",
   ],
   note: "Los casos con nombres y cifras, en el ebook.",
 };
@@ -97,12 +93,26 @@ export const download = {
   microcopy: "Gratis. Te lo enviamos a tu correo.",
 };
 
+// Cajita de contacto (si una solución no respondió / corrección de datos)
+export const contact = {
+  id: "contacto",
+  eyebrow: "Contacto",
+  title: "¿Una solución no respondió?",
+  body: "Si representas a un actor del ecosistema o quieres corregir un dato del mapeo, escríbenos. Respondemos.",
+  cta: {
+    label: "Escribirnos",
+    href: "mailto:hola@mapeocrypto.bo?subject=Contacto%20Mapeo%20Crypto%20Bolivia",
+  },
+};
+
 export const footer = {
   description:
     "El primer mapeo integral del ecosistema crypto y blockchain en Bolivia. Actores, regulación, volúmenes y las brechas que definen lo que viene.",
   // Aclaración a incluir una vez
   aclaracion:
     'En Bolivia "ETF" = Empresa de Tecnología Financiera (fintech), no Exchange Traded Fund.',
+  disclaimer:
+    "Tus datos no se comparten ni se venden. Este mapeo es un proyecto altruista: solo usamos tu correo para enviarte el ebook.",
   columns: [
     {
       title: "Contenido",
@@ -123,10 +133,10 @@ export const footer = {
     {
       title: "Contacto",
       links: [
-        { label: "Escríbenos", href: "#" },
-        { label: "Prensa", href: "#" },
+        { label: "Escríbenos", href: "#contacto" },
+        { label: "Prensa", href: "#contacto" },
       ],
     },
   ],
-  copyright: `© ${new Date().getFullYear()} Mapeo Crypto Bolivia. Todos los derechos reservados.`,
+  copyright: `© ${new Date().getFullYear()} Mapeo Crypto Bolivia. Todos los derechos reservados. Realizado por Brissia, Emmi y Yhovana.`,
 };
