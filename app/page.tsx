@@ -1,14 +1,9 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import ProductMockup from "@/components/ProductMockup";
-import Testimonials from "@/components/Testimonials";
-import Features from "@/components/Features";
-import Integrations from "@/components/Integrations";
-import FounderNote from "@/components/FounderNote";
-import Pricing from "@/components/Pricing";
-import FAQ from "@/components/FAQ";
-import FinalCTA from "@/components/FinalCTA";
+import Insight from "@/components/Insight";
+import Download from "@/components/Download";
 import Footer from "@/components/Footer";
+import { hallazgo, web3 } from "@/config/content";
 
 export default function Home() {
   return (
@@ -16,14 +11,22 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <ProductMockup />
-        <Testimonials />
-        <Features />
-        <Integrations />
-        <FounderNote />
-        <Pricing />
-        <FAQ />
-        <FinalCTA />
+        <Insight
+          id={hallazgo.id}
+          eyebrow={hallazgo.eyebrow}
+          title={hallazgo.title}
+          paragraphs={hallazgo.paragraphs}
+          note={hallazgo.note}
+        />
+        <Insight
+          id={web3.id}
+          eyebrow={web3.eyebrow}
+          title={web3.title}
+          paragraphs={web3.paragraphs}
+          note={web3.note}
+          surface
+        />
+        <Download />
       </main>
       <Footer />
     </>
