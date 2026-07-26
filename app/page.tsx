@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
 import Insight from "@/components/Insight";
 import Download from "@/components/Download";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { hallazgo, web3 } from "@/config/content";
 
@@ -31,6 +32,7 @@ export default function Home() {
           surface
         />
         <Download />
+        <Contact />
       </main>
       <Footer />
     </>
