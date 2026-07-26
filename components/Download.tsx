@@ -5,17 +5,15 @@ import EbookModal from "@/components/EbookModal";
 
 export default function Download() {
   return (
-    <section id={download.id} className="relative overflow-hidden py-28">
-      {/* Emerald glow */}
-      <div
-        aria-hidden
-        className="emerald-glow pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[720px] -translate-x-1/2 -translate-y-1/2 opacity-60 blur-2xl"
-      />
-
-      <div className="container-content relative">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow">{download.eyebrow}</span>
-          <h2 className="mx-auto mt-5 max-w-xl text-balance text-3xl font-bold tracking-tight text-heading sm:text-4xl">
+    <section id={download.id} className="py-28">
+      <div className="container-content">
+        <Reveal className="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <p className="section-label">
+            <span className="section-label__num">04</span>
+            <span className="h-px w-6 bg-white/15" />
+            {download.eyebrow}
+          </p>
+          <h2 className="mx-auto mt-5 max-w-xl text-balance font-display text-3xl font-bold tracking-tight text-heading sm:text-4xl">
             {download.title}
           </h2>
         </Reveal>

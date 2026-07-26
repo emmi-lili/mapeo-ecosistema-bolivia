@@ -1,5 +1,5 @@
-import { Activity } from "lucide-react";
-import { site, footer } from "@/config/content";
+import { footer } from "@/config/content";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
   return (
@@ -8,13 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
           {/* Brand */}
           <div className="col-span-2">
-            <a href="#" className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald text-base">
-                <Activity size={18} strokeWidth={2.5} />
-              </span>
-              <span className="text-lg font-semibold tracking-tight text-heading">
-                {site.name}
-              </span>
+            <a href="#" aria-label="Inicio">
+              <Logo />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-body">
               {footer.description}

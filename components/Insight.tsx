@@ -9,6 +9,7 @@ import Reveal from "@/components/ui/Reveal";
 
 type InsightProps = {
   id: string;
+  number: string;
   eyebrow: string;
   title: string;
   paragraphs: string[];
@@ -18,6 +19,7 @@ type InsightProps = {
 
 export default function Insight({
   id,
+  number,
   eyebrow,
   title,
   paragraphs,
@@ -28,8 +30,12 @@ export default function Insight({
     <section id={id} className={`py-24 ${surface ? "bg-surface" : ""}`}>
       <div className="container-content">
         <Reveal className="mx-auto max-w-3xl">
-          <span className="eyebrow">{eyebrow}</span>
-          <h2 className="mt-5 text-2xl font-bold leading-tight tracking-tight text-heading sm:text-4xl">
+          <p className="section-label">
+            <span className="section-label__num">{number}</span>
+            <span className="h-px w-6 bg-white/15" />
+            {eyebrow}
+          </p>
+          <h2 className="mt-5 font-display text-2xl font-bold leading-tight tracking-tight text-heading sm:text-4xl">
             {title}
           </h2>
 
