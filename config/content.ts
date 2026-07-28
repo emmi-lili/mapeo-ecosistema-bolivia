@@ -121,14 +121,6 @@ export const footer = {
       ],
     },
     {
-      title: "Fuentes",
-      links: [
-        { label: "BCB", href: "#" },
-        { label: "ASFI", href: "#" },
-        { label: "UIF", href: "#" },
-      ],
-    },
-    {
       title: "Contacto",
       links: [
         { label: "Escríbenos", href: "#contacto" },

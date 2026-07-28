@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-subtle bg-surface">
       <div className="container-content py-16">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-2">
             <a href="#" aria-label="Inicio">
