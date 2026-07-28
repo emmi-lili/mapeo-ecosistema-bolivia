@@ -136,5 +136,5 @@ export const footer = {
       ],
     },
   ],
-  copyright: `© ${new Date().getFullYear()} Mapeo Crypto Bolivia. Todos los derechos reservados. Realizado por Brissia, Emmi y Yhovana.`,
+  copyright: `© ${new Date().getFullYear()} Mapeo Crypto Bolivia. Todos los derechos reservados. Brissia Benavente, Yhovana Machaca y Emilia Aguilar, autoras del ebook y el research.`,
 };
