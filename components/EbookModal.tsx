@@ -14,6 +14,18 @@ type Status = "idle" | "sending" | "done" | "error";
 
 const COOLDOWN_KEY = "mapeo:ebook-cooldown";
 
+/** Archivo servido desde /public. Cambia el nombre aquí si tu PDF se llama distinto. */
+const EBOOK_FILE = "/Ebook_Mapeo_Crypto_Blockchain_Bolivia_2026.pdf";
+
+function downloadEbook() {
+  const a = document.createElement("a");
+  a.href = encodeURI(EBOOK_FILE);
+  a.download = "Ebook_Mapeo_Crypto_Blockchain_Bolivia_2026.pdf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
 function cooldownActive(): boolean {
   try {
     const raw = localStorage.getItem(COOLDOWN_KEY);
@@ -111,6 +123,7 @@ export default function EbookModal({ label }: { label: string }) {
 
       setCooldown();
       setStatus("done");
+      downloadEbook();
     } catch {
       setError("Error de red. Revisa tu conexión e intenta de nuevo.");
       setStatus("error");
@@ -171,11 +184,17 @@ export default function EbookModal({ label }: { label: string }) {
                     ¡Listo, {name.split(" ")[0] || "crack"}!
                   </h3>
                   <p className="mt-2 text-sm text-body">
-                    Enviamos el reporte a{" "}
-                    <span className="text-heading">{email}</span>. Revisa tu
-                    bandeja (y el spam, por si acaso).
+                    Tu descarga comenzó. Si no arrancó sola, dale al botón de
+                    abajo.
                   </p>
-                  <button onClick={close} className="btn-secondary mt-6 w-full">
+                  <button
+                    onClick={downloadEbook}
+                    className="btn-primary mt-6 w-full"
+                  >
+                    Descargar ebook
+                    <Download size={18} />
+                  </button>
+                  <button onClick={close} className="btn-secondary mt-3 w-full">
                     Cerrar
                   </button>
                 </div>
