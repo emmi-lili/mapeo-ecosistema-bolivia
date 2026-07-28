@@ -8,6 +8,7 @@ import {
   sanitizeEmail,
   sanitizeName,
 } from "@/lib/ebook-security";
+import { insertEbookLead } from "@/lib/supabase";
 
 export const runtime = "nodejs";
 
@@ -95,11 +96,27 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // ── MOCK envío ──────────────────────────────────────────
-  // Conectar aquí Resend / Mailchimp / etc.
-  // await sendEbook({ name, email });
-  await new Promise((r) => setTimeout(r, 400));
+  // ── Guardar el lead en Supabase ─────────────────────────
+  const { error } = await insertEbookLead({
+    name,
+    email,
+    ip: ip === "unknown" ? null : ip,
+    user_agent: req.headers.get("user-agent")?.slice(0, 500) ?? null,
+  });
+
+  if (error) {
+    // 23505 = unique_violation (mismo email el mismo día): no es un error para el usuario.
+    if (error.code !== "23505") {
+      console.error("[ebook] insert error:", error.message);
+      return NextResponse.json(
+        { error: "No pudimos guardar tu solicitud. Intenta más tarde." },
+        { status: 500 },
+      );
+    }
+  }
   // ───────────────────────────────────────────────────────
+  // TODO: enviar el ebook por correo aquí (Resend / Mailchimp).
+  // await sendEbook({ name, email });
 
   return NextResponse.json({ ok: true });
 }
