@@ -29,7 +29,7 @@ export const hero = {
   subtitle:
     "El primer mapeo integral del ecosistema crypto y blockchain en Bolivia: actores, regulación, volúmenes y las brechas que definen lo que viene. Con datos oficiales del BCB, ASFI y UIF.",
   cta: { label: "Descargar el ebook", href: "#descarga" },
-  microcopy: "Gratis. Te lo enviamos a tu correo.",
+  microcopy: "Gratis. Al dejar tus datos, el PDF se descarga al instante.",
   // Cifras destacadas bajo el CTA
   stats: [
     { value: "+630%", label: "crecimiento en un año" },
@@ -88,7 +88,7 @@ export const download = {
     "Los insights desarrollados",
   ],
   cta: { label: "Descargar el ebook", href: "#descarga" },
-  microcopy: "Gratis. Te lo enviamos a tu correo.",
+  microcopy: "Gratis. Al dejar tus datos, el PDF se descarga al instante.",
 };
 
 // Cajita de contacto (si una solución no respondió / corrección de datos)
@@ -110,7 +110,7 @@ export const footer = {
   aclaracion:
     'En Bolivia "ETF" = Empresa de Tecnología Financiera (fintech), no Exchange Traded Fund.',
   disclaimer:
-    "Tus datos no se comparten ni se venden. Este mapeo es un proyecto altruista: solo usamos tu correo para enviarte el ebook.",
+    "Tus datos no se comparten ni se venden. Este mapeo es un proyecto altruista: al dejar tus datos el ebook se descarga al instante.",
   columns: [
     {
       title: "Contenido",

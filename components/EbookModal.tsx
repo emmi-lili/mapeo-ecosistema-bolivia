@@ -66,7 +66,7 @@ export default function EbookModal({ label }: { label: string }) {
 
   function openModal() {
     if (cooldownActive()) {
-      setError("Ya pediste el ebook hace poco. Revisa tu correo.");
+      setError("Ya pediste el ebook hace poco. Revisa tus descargas.");
       setStatus("error");
       setOpen(true);
       openedAt.current = Date.now();
@@ -217,8 +217,8 @@ export default function EbookModal({ label }: { label: string }) {
                     Descarga el ebook
                   </h3>
                   <p className="mt-2 text-sm text-body">
-                    Déjanos tu nombre y correo y te enviamos el reporte del
-                    ecosistema cripto boliviano.
+                    Déjanos tu nombre y correo y el reporte del ecosistema
+                    cripto boliviano se descarga al instante.
                   </p>
 
                   <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -305,7 +305,7 @@ export default function EbookModal({ label }: { label: string }) {
                   </form>
 
                   <p className="mt-4 text-center text-xs text-body/70">
-                    No compartimos tu correo. Solo te enviamos el reporte.
+                    No compartimos tu correo. El reporte se descarga al instante.
                   </p>
                 </div>
               )}
