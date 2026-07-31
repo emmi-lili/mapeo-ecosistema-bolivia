@@ -99,7 +99,7 @@ export const contact = {
   body: "Si representas a un actor del ecosistema o quieres corregir un dato del mapeo, escríbenos. Respondemos.",
   cta: {
     label: "Escribirnos",
-    href: "mailto:hola@mapeocrypto.bo?subject=Contacto%20Mapeo%20Crypto%20Bolivia",
+    href: "mailto:emmi.a.rivero@gmail.com?subject=Contacto%20Mapeo%20Crypto%20Bolivia",
   },
 };
 
