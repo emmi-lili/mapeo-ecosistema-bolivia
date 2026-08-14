@@ -14,18 +14,6 @@ type Status = "idle" | "sending" | "done" | "error";
 
 const COOLDOWN_KEY = "mapeo:ebook-cooldown";
 
-/** Archivo servido desde /public. Cambia el nombre aquí si tu PDF se llama distinto. */
-const EBOOK_FILE = "/Ebook_Mapeo_Crypto_Blockchain_Bolivia_2026.pdf";
-
-function downloadEbook() {
-  const a = document.createElement("a");
-  a.href = encodeURI(EBOOK_FILE);
-  a.download = "Ebook_Mapeo_Crypto_Blockchain_Bolivia_2026.pdf";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
-
 function cooldownActive(): boolean {
   try {
     const raw = localStorage.getItem(COOLDOWN_KEY);
@@ -47,6 +35,15 @@ function setCooldown() {
   }
 }
 
+function triggerDownload(url: string) {
+  const a = document.createElement("a");
+  a.href = url;
+  a.rel = "noopener";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
 export default function EbookModal({ label }: { label: string }) {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
@@ -54,6 +51,7 @@ export default function EbookModal({ label }: { label: string }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot
+  const [downloadUrl, setDownloadUrl] = useState("");
   const openedAt = useRef(0);
   const submitting = useRef(false);
 
@@ -86,6 +84,7 @@ export default function EbookModal({ label }: { label: string }) {
       setName("");
       setEmail("");
       setWebsite("");
+      setDownloadUrl("");
       submitting.current = false;
     }, 250);
   }
@@ -112,6 +111,7 @@ export default function EbookModal({ label }: { label: string }) {
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
         error?: string;
+        downloadUrl?: string | null;
       };
 
       if (!res.ok) {
@@ -121,9 +121,11 @@ export default function EbookModal({ label }: { label: string }) {
         return;
       }
 
+      const url = data.downloadUrl || "";
       setCooldown();
+      setDownloadUrl(url);
       setStatus("done");
-      downloadEbook();
+      if (url) triggerDownload(url);
     } catch {
       setError("Error de red. Revisa tu conexión e intenta de nuevo.");
       setStatus("error");
@@ -188,8 +190,9 @@ export default function EbookModal({ label }: { label: string }) {
                     abajo.
                   </p>
                   <button
-                    onClick={downloadEbook}
-                    className="btn-primary mt-6 w-full"
+                    onClick={() => downloadUrl && triggerDownload(downloadUrl)}
+                    disabled={!downloadUrl}
+                    className="btn-primary mt-6 w-full disabled:opacity-70"
                   >
                     Descargar ebook
                     <Download size={18} />
