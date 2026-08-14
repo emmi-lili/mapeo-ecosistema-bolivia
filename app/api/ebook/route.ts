@@ -8,9 +8,15 @@ import {
   sanitizeEmail,
   sanitizeName,
 } from "@/lib/ebook-security";
+import { mintDownloadToken } from "@/lib/ebook-token";
 import { insertEbookLead } from "@/lib/supabase";
 
 export const runtime = "nodejs";
+
+function storeLeadsEnabled(): boolean {
+  if (process.env.EBOOK_STORE_LEADS === "false") return false;
+  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+}
 
 function clientIp(req: NextRequest): string {
   const forwarded = req.headers.get("x-forwarded-for");
@@ -22,7 +28,6 @@ function sameOrigin(req: NextRequest): boolean {
   const origin = req.headers.get("origin");
   const host = req.headers.get("host");
   if (!origin || !host) {
-    // Prefiere Origin; sin Origin (curl) lo dejamos pasar solo en dev
     return process.env.NODE_ENV !== "production";
   }
   try {
@@ -54,10 +59,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "JSON inválido." }, { status: 400 });
   }
 
-  // Honeypot: los bots suelen rellenar campos ocultos
   if (!isHoneypotClean(body.website) || !isHoneypotClean(body.company)) {
-    // Respuesta falsa de éxito para no enseñar el filtro
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, downloadUrl: null });
   }
 
   if (!isFillTimeValid(body.openedAt)) {
@@ -96,29 +99,24 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // ── Guardar el lead en Supabase ─────────────────────────
-  const { error } = await insertEbookLead({
-    name,
-    email,
-    ip: ip === "unknown" ? null : ip,
-    user_agent: req.headers.get("user-agent")?.slice(0, 500) ?? null,
-  });
-
-  if (error) {
-    // 23505 = unique_violation (mismo email el mismo día): no es un error para el usuario.
-    if (error.code !== "23505") {
+  // Guardar lead solo si la DB está habilitada (opcional).
+  if (storeLeadsEnabled()) {
+    const { error } = await insertEbookLead({
+      name,
+      email,
+      ip: ip === "unknown" ? null : ip,
+      user_agent: req.headers.get("user-agent")?.slice(0, 500) ?? null,
+    });
+    if (error && error.code !== "23505") {
       console.error("[ebook] insert error:", error.message);
-      return NextResponse.json(
-        { error: "No pudimos guardar tu solicitud. Intenta más tarde." },
-        { status: 500 },
-      );
+      // No bloqueamos la descarga si falla el storage
     }
   }
-  // ───────────────────────────────────────────────────────
-  // TODO: enviar el ebook por correo aquí (Resend / Mailchimp).
-  // await sendEbook({ name, email });
 
-  return NextResponse.json({ ok: true });
+  const token = mintDownloadToken(email);
+  const downloadUrl = `/api/ebook/file?t=${encodeURIComponent(token)}`;
+
+  return NextResponse.json({ ok: true, downloadUrl });
 }
 
 export async function GET() {
